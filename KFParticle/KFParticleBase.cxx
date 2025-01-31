@@ -23,7 +23,7 @@
 #include "KFParticleBase.h"
 #include <cmath>
 
-#ifndef KFParticleStandalone
+#if !defined(KFParticleStandalone) && !defined(CBM_ONLINE)
 ClassImp(KFParticleBase)
 #endif
 

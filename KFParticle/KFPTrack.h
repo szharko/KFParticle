@@ -35,9 +35,11 @@
  **/
 
 #include <cmath>
+#if !defined(CBM_ONLINE)
 #include "TObject.h"
+#endif
 class KFPTrack
-#ifdef __ROOT__
+#if defined(__ROOT__) && !defined(CBM_ONLINE)
   : public TObject
 #endif
 {
@@ -262,7 +264,7 @@ class KFPTrack
    **/
   float fieldRegion[10];
 #endif
-#ifdef __ROOT__
+#if defined(__ROOT__) && !defined(CBM_ONLINE)
   ClassDef(KFPTrack, 1)
 #endif
 };

@@ -21,7 +21,7 @@
 
 #include "KFVertex.h"
 
-#ifndef KFParticleStandalone
+#if !defined(KFParticleStandalone) && !defined(CBM_ONLINE)
 ClassImp(KFVertex);
 #endif
 

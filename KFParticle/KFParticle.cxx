@@ -26,7 +26,7 @@
 #include "KFPTrack.h"
 #include "KFPVertex.h"
 
-#ifndef KFParticleStandalone
+#if !defined(KFParticleStandalone) && !defined(CBM_ONLINE)
 ClassImp(KFParticle);
 #endif
 

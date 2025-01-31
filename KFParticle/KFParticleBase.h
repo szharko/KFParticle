@@ -27,7 +27,7 @@
 #define HomogeneousField
 #endif
 
-#ifdef HLTCA_STANDALONE
+#if defined(HLTCA_STANDALONE) || defined(CBM_ONLINE)
 #include "RootTypesDef.h"
 #else
 #include "TObject.h"
@@ -44,7 +44,10 @@
  ** Contains the main mathematics of the KF Particle . Will be merged with the KFParticle class.
  **/
 
-class KFParticleBase : public TObject
+class KFParticleBase
+#if !defined(CBM_ONLINE)
+ : public TObject
+#endif
 {
 
  public:
@@ -290,7 +293,7 @@ class KFParticleBase : public TObject
    **/
   std::vector<int> fDaughtersIds;
 
-#ifndef KFParticleStandalone
+#if !defined(KFParticleStandalone) && !defined(CBM_ONLINE)
   ClassDef(KFParticleBase, 3)
 #endif
 };

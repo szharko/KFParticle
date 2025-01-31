@@ -325,7 +325,7 @@ class KFParticle : public KFParticleBase
   float fieldRegion[10];
 #endif
 
-#ifndef KFParticleStandalone
+#if !defined(KFParticleStandalone) && !defined(CBM_ONLINE)
   ClassDef(KFParticle, 3)
 #endif
 };
