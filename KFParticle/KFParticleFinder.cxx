@@ -199,6 +199,7 @@ void KFParticleFinder::FindParticles(KFPTrackVector* vRTracks, kfvector_float* C
         for(int iF=0; iF<10; iF++)
           tmp.SetFieldCoeff( vRTracks[iV].FieldCoefficient(iF)[iTr], iF);
 #endif
+        std::cout << ">>> Adding particle: id=" << tmp.Id() << ", PID=" << tmp.GetPDG() << ", mass=" << tmp.GetMass() << '\n';
         Particles.push_back(tmp);
       }
     }
