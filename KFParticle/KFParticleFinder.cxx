@@ -197,16 +197,20 @@ void KFParticleFinder::FindParticles(KFPTrackVector* vRTracks, kfvector_float* C
         if (pdg == -19)
           pdg = -13;
         KFParticle tmp(kfTrack, pdg);
+        std::cout << "!!0> New particle: id=" << tmp.Id() << ", pdg=" << tmp.GetPDG() << ", mass=" << tmp.GetMass() << '\n';
         tmp.SetPDG(pdg);
         tmp.SetId(Particles.size());
+        std::cout << "!!1> New particle: id=" << tmp.Id() << ", pdg=" << tmp.GetPDG() << ", mass=" << tmp.GetMass() << '\n';
         vRTracks[iV].SetId(Particles.size(), iTr);
         if (vRTracks[iV + 4].Size() > 0)
           vRTracks[iV + 4].SetId(Particles.size(), iTr);
         tmp.AddDaughterId(kfTrack.Id());
+        std::cout << "!!2> New particle: id=" << tmp.Id() << ", pdg=" << tmp.GetPDG() << ", mass=" << tmp.GetMass() << '\n';
 #ifdef NonhomogeneousField
         for (int iF = 0; iF < 10; iF++)
           tmp.SetFieldCoeff(vRTracks[iV].FieldCoefficient(iF)[iTr], iF);
 #endif
+        std::cout << "!!3> New particle: id=" << tmp.Id() << ", pdg=" << tmp.GetPDG() << ", mass=" << tmp.GetMass() << '\n';
         Particles.push_back(tmp);
       }
     }

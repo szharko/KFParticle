@@ -26,6 +26,8 @@
 #include "KFPTrack.h"
 #include "KFPVertex.h"
 
+#include <iostream>
+
 #ifndef KFParticleStandalone
 ClassImp(KFParticle);
 #endif
@@ -67,6 +69,7 @@ void KFParticle::Create(const float Param[], const float Cov[], Int_t Charge, fl
     C[i] = Cov[i];
   }
 
+  std::cout << ">KFParticle::Create(): mass=" << mass << ", charge=" << Charge << '\n'; 
   KFParticleBase::Initialize(Param, C, Charge, mass);
 }
 
@@ -94,7 +97,7 @@ void KFParticle::Create(const Double_t Param[], const Double_t Cov[], Int_t Char
   for (int i = 0; i < 21; i++) {
     C[i] = Cov[i];
   }
-
+  std::cout << ">KFParticle::Create(): mass=" << mass << ", charge=" << Charge << '\n'; 
   KFParticleBase::Initialize(P, C, Charge, mass);
 }
 
@@ -111,7 +114,7 @@ KFParticle::KFParticle(const KFPTrack& track, const int PID) : KFParticleBase()
   track.GetCovarianceXYZPxPyPz(fC);
 
   float mass = KFParticleDatabase::Instance()->GetMass(PID);
-
+  std::cout << ">KFParticle ctor: mass=" << mass << ", PID=" << PID << '\n';
   Create(fP, fC, fQ, mass);
   fChi2 = track.GetChi2();
   fNDF = track.GetNDF();

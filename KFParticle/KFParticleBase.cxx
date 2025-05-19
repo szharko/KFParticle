@@ -22,6 +22,7 @@
 
 #include "KFParticleBase.h"
 #include <cmath>
+#include <iostream>
 
 #ifndef KFParticleStandalone
 ClassImp(KFParticleBase)
@@ -175,6 +176,8 @@ void KFParticleBase::Initialize(const float Param[], const float Cov[], Int_t Ch
   fChi2 = 0;
   fAtProductionVertex = 0;
   fSFromDecay = 0;
+
+  std::cout << ">KFParticleBase::Initialize(): mass=" << Mass << ", energy=" << energy << '\n'; 
 
   float energyInv = 1. / energy;
   float
